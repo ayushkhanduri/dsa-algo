@@ -1,0 +1,8 @@
+**/.vscode/**
+.DS_Store
+
+# compiled object files
+*.slo
+*.lo
+*.o
+*.obj
