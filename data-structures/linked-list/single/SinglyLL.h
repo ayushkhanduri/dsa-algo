@@ -5,6 +5,7 @@ template<typename T>
 class Node {
 public:
 	Node(T element);
+	~Node();
 	T value;
 	Node *next ;
 };
@@ -16,17 +17,17 @@ private:
 	Node<T> *tail = nullptr;
 	int list_size = 0;
 	bool removeHead();
+	bool addAtFirst(T element);
 public:
 	SinglyLL();
-	void clear();
+	bool clear();
 	void traverse();
 	T getFirstElement();
 	T getLastElement();
 	int size();
 	bool isEmpty();
-	void addItem(T element);
-	void addAtFirst(T element);
-	void addAtPosition(T element, int size);
+	bool addItem(T element);
+	bool addAtPosition(T element, int index);
 	int indexOf(T element);
 	bool removeAt(int index);
 	bool removeElement(T element);
