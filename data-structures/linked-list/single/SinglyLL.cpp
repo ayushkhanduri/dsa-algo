@@ -71,10 +71,19 @@ template<typename T>
 void SinglyLL<T>:: traverse() {
 	Node<T> *startCopy = head;
 	int count = 0;
-	while (startCopy != nullptr) {
-		cout << startCopy->value << endl;
-		startCopy = startCopy->next;
+	if (startCopy == nullptr) {
+		cout << "nothing to print";
+	} else {
+		while (startCopy != nullptr) {
+			if (count > 10) {
+				break;
+			}
+			cout << startCopy->value << endl;
+			startCopy = startCopy->next;
+			count++;
+		}
 	}
+
 }
 
 template<typename T>
@@ -188,35 +197,50 @@ int SinglyLL<T>:: indexOf(T element) {
 	return index;
 }
 
+template<typename T>
+bool SinglyLL<T>:: removeNthElementFromBack(int index) {
+	Node<T> *headCopy = head;
+	Node<T> *tailCopy = head;
+	Node<T> *previous = head;
+	int i = 0, actualIndex = -1;
+	int size = 0;
+	while (true) {
+		i++;
+		if (headCopy->next == nullptr) {
+			tailCopy = headCopy;
+			headCopy ->next = head;
+			actualIndex = i - index ;
+			size = i;
+			i = 0;
+		}
+		previous = headCopy;
+		headCopy = headCopy->next;
+		if (actualIndex != -1 && i == actualIndex) {
+			break;
+		}
+	}
+	tailCopy->next = nullptr;
+	if (previous != tailCopy) {
+		previous->next = headCopy->next;
+	}
+	if (actualIndex == 0) {
+		head = head->next;
+	}
+	headCopy->next = nullptr;
+	delete headCopy;
+	headCopy = nullptr;
+	list_size--;
+	return true;
+}
+
 int main() {
 	SinglyLL<int> s;
-	s.addItem(23);
-	s.addItem(44);
-	s.addItem(999);
-	s.addItem(85);
+	s.addItem(1);
+	s.addItem(2);
 	s.addItem(3);
+	s.removeNthElementFromBack(3);
 
 	s.traverse();
-
-	cout << "Adding at position" << endl;
-
-	s.addAtPosition(1000, 3);
-
-
-	s.addAtPosition(6969, 0);
-	cout << endl << endl;
-
-
-
-	s.addAtPosition(32, 0);
-	s.traverse();
-
-	cout << endl;
-	cout << "index of 6969:"  << s.indexOf(6969) << endl;
-	cout << "index of 999:"  << s.indexOf(999) << endl;
-	cout << "index of 85:"  << s.indexOf(85) << endl;
-	cout << "index of 3:"  << s.indexOf(3) << endl;
-	cout << "index of 360:"  << s.indexOf(360) << endl;
 
 
 }

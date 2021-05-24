@@ -31,4 +31,5 @@ public:
 	int indexOf(T element);
 	bool removeAt(int index);
 	bool removeElement(T element);
+	bool removeNthElementFromBack(int index);
 };
