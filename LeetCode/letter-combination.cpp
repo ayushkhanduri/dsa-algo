@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
 #include "iostream"
 #include "vector"
 #include "unordered_map"
@@ -5,6 +7,17 @@
 
 using namespace std;
 
+
+void backtracking(int i,  string str, string digits , unordered_map<char, string> &map, vector<string> &v) {
+	if (str.size() == digits.size()) {
+		v.push_back(str);
+		return;
+	}
+
+	for (char c : map.at(digits.at(i))) {
+		backtracking(i + 1, str + c, digits, map, v);
+	}
+}
 
 vector<string> letterCombinations(string digits) {
 	vector<string> v;
@@ -20,6 +33,9 @@ vector<string> letterCombinations(string digits) {
 	};
 	int size = digits.size();
 	vector<int> arr;
+	if (size == 0) {
+		return v;
+	}
 	if (size == 1) {
 		string singleString = map.at(digits.at(0));
 		int singleStringSize = singleString.size();
@@ -28,28 +44,15 @@ vector<string> letterCombinations(string digits) {
 			v.push_back(str);
 		}
 	} else {
-		vector<string> collection;
-		int collection_size = 0;
-		for (int i = 0 ; i < size ; i++) {
-			collection.push_back(map.at(i));
-			arr.push_back(0);
-			size++;
-			for (int j = 0; j < size  ; j++) {
-				for (int k = size - 1 ; k <= 0 ; k++) {
-					for (int l = 0 ; l < collection.at(k).size(); l++) {
-						// string st =
-					}
-				}
-			}
-		}
+		backtracking(0, "", digits, map, v);
 	}
-
 	return v;
 }
 
 int main() {
-	string digits = "2";
+	string digits = "2345";
 	vector<string> s = letterCombinations(digits);
+	cout << endl << endl;
 	for (string str : s) {
 		cout << str << endl;
 	}

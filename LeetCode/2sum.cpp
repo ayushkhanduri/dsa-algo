@@ -16,8 +16,6 @@ vector<int> twoSum(vector<int>& nums, int target) {
 		map.insert({ nums.at(i) , i} );
 		map.insert({nums.at(size - 1 - i), (size - 1 - i)});
 		int diff = target - nums.at(i);
-		cout << "diff:" << diff << endl;
-		cout << "map:" << map.at(diff) << endl;
 		try {
 			int index = map.at(diff);
 			if (index != i) {
