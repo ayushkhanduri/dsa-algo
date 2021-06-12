@@ -42,6 +42,7 @@ int isCachedPalindrome(int **table, int start, int end, string s ) {
 	return isPalindrome;
 }
 
+// failing in the test
 string dynamicPalidrome(string s) {
 	int size = s.size();
 	int **table = new int *[size];
