@@ -4,12 +4,27 @@
 #include "vector"
 
 using namespace std;
-// can be implemented using linked list or dynamic array but would be an overkill
+
+class SinglyLL {
+public:
+	int value;
+	SinglyLL *next;
+	SinglyLL(int newVal): value(newVal), next(nullptr) {}
+};
+
 class Stack {
 private:
-	vector<int> stack;
-	int size = 0;
+	SinglyLL *top = nullptr;
+	int length = 0;
 public:
+	// O(1)
 	void push(int item);
+	// O(1)
 	void pop();
+	// O(1)
+	bool isEmpty();
+	// O(1)
+	int size();
+	//for testing
+	void traverse();
 };
