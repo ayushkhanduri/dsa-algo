@@ -43,4 +43,22 @@ public:
 		}
 	}
 
+
+	static void swap_value(int from, int to, vector<int> &v) {
+		int fromItem = v.at(from);
+		v.at(from) = v.at(to);
+		v.at(to) = fromItem;
+	}
+
+	static void print_vectors(vector<int> v) {
+		cout << "[";
+		for (int i = 0 ; i < v.size(); i ++ ) {
+			cout << v.at(i);
+			if (i != v.size() - 1) {
+				cout << " , ";
+			}
+		}
+		cout << "]" << endl;
+	}
+
 };

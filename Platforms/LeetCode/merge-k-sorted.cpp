@@ -38,20 +38,6 @@ ListNode* createLLFromVector(vector<int> v) {
 	return start;
 }
 
-void recursiveLL(vector<ListNode*>& lists, int index, ListNode* newLL) {
-	if (index >= lists.size() || lists.at(index) == nullptr) {
-		return ;
-	} else {
-		ListNode* newNode = new ListNode(lists.at(index)->val);
-		for (int i = index; i < lists.size(); i++) {
-			if (lists.at(index)->next->val < lists.at(index + 1) -> val) {
-
-			}
-			recursiveLL(lists, i, newLL);
-		}
-	}
-}
-
 
 // brute force also got accepted
 ListNode* mergeKListsBruteForce(vector<ListNode*>& lists) {

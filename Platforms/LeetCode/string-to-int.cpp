@@ -1,13 +1,14 @@
+//https://leetcode.com/problems/string-to-integer-atoi/
 #include "iostream"
 #include <climits>
 
 using namespace std;
 
 int myAtoi(string s) {
-    int number =0;
+    int number = 0;
     int multiplier = 1;
     bool explicitMultiplier = false;
-    for (char c: s) {
+    for (char c : s) {
         if (c == ' ' && !explicitMultiplier) {
             continue;
         }
@@ -27,21 +28,21 @@ int myAtoi(string s) {
         }
 
         int ascii = (int) c;
-        if (ascii >= 48 && ascii <=57) {
+        if (ascii >= 48 && ascii <= 57) {
             int charToNumber = c - '0';
             if ( number != 0 ) {
                 if (multiplier == 1) {
-                    if (!(( INT_MAX/number >= 10) && ((INT_MAX - (number * 10 )) > charToNumber))) {
+                    if (!(( INT_MAX / number >= 10) && ((INT_MAX - (number * 10 )) > charToNumber))) {
                         number = INT_MAX;
                         break;
                     }
                 } else {
-                    if (!(( INT_MIN/(float)number >= 10) && ((INT_MIN - (number * 10 )) < -charToNumber))) {
+                    if (!(( INT_MIN / (float)number >= 10) && ((INT_MIN - (number * 10 )) < -charToNumber))) {
                         number = INT_MIN;
                         break;
                     }
                 }
-            } 
+            }
             number = (number * 10) +  (multiplier * charToNumber);
             explicitMultiplier = true;
         } else {

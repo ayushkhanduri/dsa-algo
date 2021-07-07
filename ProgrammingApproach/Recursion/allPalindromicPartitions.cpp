@@ -32,7 +32,6 @@ void insertString(vector<string> &stringVector, string inputStr, int starting, i
 }
 
 void allPalidromeRecursive(vector<string> &stringVector,  string input, int starting) {
-	static int outcomes = 1;
 	int size = input.size();
 	if (starting == size - 1) {
 		return ;
